@@ -1,5 +1,32 @@
-# Custom Neural Network Library from Scratch in Python
+# Neural Network From Scratch
 
-## Project Description
+This code is part of my video series on YouTube: [Neural Network from Scratch | Mathematics & Python Code](https://youtube.com/playlist?list=PLQ4osgQ7WN6PGnvt6tzLAVAEMsL3LBqpm).
 
-This project involves developing a custom Machine Learning library in Python, inspired by high-level libraries like Keras. The goal is to construct neural network architectures using a modular approach, enabling flexible and dynamic model building. The project focuses on the mathematical foundations and implementation of essential components such as the Dense (Fully Connected) layer and various Activation functions. The result is a versatile, scalable library capable of constructing and training complex neural network models. This project emphasizes both the theoretical underpinnings and practical implementation of neural network components.
+# Try it!
+
+```
+python3 xor.py
+```
+
+# Example
+
+```python
+import numpy as np
+
+from dense import Dense
+from activations import Tanh
+from losses import mse, mse_prime
+from network import train
+
+X = np.reshape([[0, 0], [0, 1], [1, 0], [1, 1]], (4, 2, 1))
+Y = np.reshape([[0], [1], [1], [0]], (4, 1, 1))
+
+network = [
+    Dense(2, 3),
+    Tanh(),
+    Dense(3, 1),
+    Tanh()
+]
+
+train(network, mse, mse_prime, X, Y, epochs=10000, learning_rate=0.1)
+```
